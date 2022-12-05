@@ -3,11 +3,9 @@ package com.example.viaticosonline.entidades;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-
 @Entity
 @Table(name="viajes")
-public class viaje {
+public class Viaje {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
@@ -34,15 +32,15 @@ public class viaje {
     @Column(name = "gastosAlimentacion")
     private double gastosAlimentacion;
 
+    @ManyToOne(optional = false)
+    @JoinColumn (name = "fk_viaje", referencedColumnName = "id")
+    @JsonBackReference
 
-    public viaje() {
+    private Empleado empleado;
+
+
+    public Viaje() {
     }
-    
-    @OneToMany(mappedBy = "empleado")
-    private list<viaje> viajes = new ArrayList<viaje>()
-
-
-
 
 
     public Integer getId() {
@@ -109,4 +107,13 @@ public class viaje {
         this.gastosAlimentacion = gastosAlimentacion;
     }
 
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
 }
+
+

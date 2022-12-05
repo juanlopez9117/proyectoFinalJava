@@ -1,11 +1,10 @@
 package com.example.viaticosonline.entidades;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="empleados")
-public class empleado {
+public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -27,7 +26,7 @@ public class empleado {
 
 
 
-    public empleado() {
+    public Empleado() {
     }
 
     public Integer getId() {
